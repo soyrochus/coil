@@ -45,11 +45,52 @@ referring to the corresponding source file (using a Spring resource locator)
     <coil:javascript id="record-js" script-source="classpath:coil/test/beans/beanrecord.js" />
 
 
+Instantiating beans
+-------------------
+
+The last expression within the source file is considered to represent the "bean". In case of a
+Clojure script it can be either a Class or Clojure value. In case of the former it will be
+instantiated using the default constructor.
+
+In case of a Javascript file, the expression must be an object instance. In order for it to be
+usefull it means that the last expression really should be an implemenation of an existing Java
+interface. In the test the following example is used:
+
+
+```javascript
+
+    var BeanRecord = Packages.coil.test.beans.BeanRecord; ;; interface within test package
+
+    var initImpl = function(data, x, y){
+    
+      return  {
+	
+           getData: function(){
+               return data;
+           },
+           getX: function(){
+               return x;
+           },
+           getY: function(){
+               return y;
+           }
+      };
+    };
+    
+
+    var beanrecord = new BeanRecord(initImpl("Bean from Javascript", 10, 10.001));
+
+    //return from script
+    beanrecord;
+    
+```
+
 
 Usage of Spring from within Clojure
 ------------------------------------
 
-The library implements the Clojure name space clojure.spring.context. Please refer to the component documentation for advanced usage. Typical usage would focus on the following functions:
+The library implements the Clojure name space `clojure.spring.context`. Please refer to the component
+documentation for advanced usage. Typical usage would focus on the following functions:
 
 
 *`(init-spring [path])`*

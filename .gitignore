@@ -17,6 +17,4 @@ autodoc/*
 log4j.properties
 sample.project.clj
 sync.sh
-
-
-
+README.html
