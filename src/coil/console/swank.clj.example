@@ -1,0 +1,52 @@
+(ns coil.console.swank
+  (:require [swank.swank])
+  (:gen-class))
+
+(gen-class
+ :name coil.console.swank.SwankServer
+ :init init
+ :methods [[getPort [] String] [setPort [String] void]]
+ :constructors {[] []  [String] []}
+ :state state)
+
+(defn -init
+  ([]
+     [[] (let [a "HOOOI"] 
+             (atom {:port a}))])
+  ([port]
+    [[] (atom {:port port})]))
+
+(defn -setPort [this port]
+  (let [state (.state this)]
+    (swap! state assoc :clj-object port)))
+
+(defn -getPort [this]
+  (let [state (.state this)]
+    (:port @state)))
+
+;;(compile 'coil.console.swank)
+;;(import 'coil.console.swank.SwankServer)
+;;(.getPort (SwankServer. ))
+
+
+
+;; (comment
+
+;;   (defbean SwankServer ;;:extends Object :implements Runnable
+;;     [port ]
+;;     (constructor 
+;;      ([]  (super)
+;;         (set-prop! port 9000))
+;;      ([port] (super ^String "")
+;;         (set-prop! port)))
+;;     (start []
+;;            (swank.swank/start-server))
+;;     (stop []
+;;           (swank.swank/stop-server)))
+;; )
+
+
+         ;;(SwankServer .)
+
+         ;; (swank.swank/start-server))) ;; optionally takes a port argument
+

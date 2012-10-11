@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns="http://skitr.com/schema/coil"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://skitr.com/schema/coil"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+
+    <xsd:element name="clojure">    
+      <xsd:complexType>
+        <xsd:complexContent>
+          <xsd:extension base="beans:identifiedType">
+            <xsd:sequence>
+              <xsd:element name="inline-script" minOccurs="0" maxOccurs="1" />
+              <xsd:element name="property" type="beans:propertyType" minOccurs="0" maxOccurs="unbounded" />
+              <xsd:element name="var" type="beans:propertyType" minOccurs="0" maxOccurs="unbounded" />
+            </xsd:sequence>
+            <xsd:attribute name="refresh-check-delay" type="xsd:long" />
+            <xsd:attribute name="script-source" type="xsd:string" />
+            <!--xsd:attribute name="bean-name" type="xsd:string" / -->
+            <!--xsd:attribute name="return-type" type="xsd:string" / -->
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="javascript">    
+      <xsd:complexType>
+        <xsd:complexContent>
+          <xsd:extension base="beans:identifiedType">
+            <xsd:sequence>
+              <xsd:element name="inline-script" minOccurs="0" maxOccurs="1" />
+              <xsd:element name="property" type="beans:propertyType" minOccurs="0" maxOccurs="unbounded" />
+              <xsd:element name="var" type="beans:propertyType" minOccurs="0" maxOccurs="unbounded" />
+            </xsd:sequence>
+            <xsd:attribute name="refresh-check-delay" type="xsd:long" />
+            <xsd:attribute name="script-source" type="xsd:string" />
+            <!--xsd:attribute name="bean-name" type="xsd:string" / -->
+            <!--xsd:attribute name="return-type" type="xsd:string" / -->
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:element>
+
+
+</xsd:schema>
