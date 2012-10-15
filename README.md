@@ -145,6 +145,10 @@ The bindings are in the form of [ref bean-name ..]
       
 ```
 
+Acknowledgements
+---------------
+The Java code is based on the Jython Spring integration which Jason Briggs released in 2007.
+
 
 License
 -------
